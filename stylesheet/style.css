@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#entries-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#entries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e3e3e3;
+    padding: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    flex: 1 1 calc(33.333% - 10px);
+    min-width: 200px;
+    box-sizing: border-box;
+
+}
+
+.entry button {
+    margin-top: 1rem;
+    width: auto;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+#result {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .entry {
+        flex: 1 1 100%;
+    }
+}
