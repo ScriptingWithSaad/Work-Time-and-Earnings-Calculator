@@ -1,17 +1,18 @@
 let entries = [];
 
 function addEntry() {
+    const name = document.getElementById('name').value.trim();
     const minutes = parseFloat(document.getElementById('minutes').value);
     const rate = parseFloat(document.getElementById('rate').value);
     const currency = document.getElementById('currency').value;
 
-    if (isNaN(minutes) || isNaN(rate)) {
-        alert('Please enter valid numbers.');
+    if (name === '' || isNaN(minutes) || isNaN(rate)) {
+        alert('Please enter valid information for all fields.');
         return;
     }
 
     const earnings = minutes * rate;
-    entries.push({ minutes, rate, earnings, currency });
+    entries.push({ name, minutes, rate, earnings, currency });
 
     updateEntriesDisplay();
     clearInputs();
@@ -25,14 +26,26 @@ function updateEntriesDisplay() {
         const entryDiv = document.createElement('div');
         entryDiv.classList.add('entry');
         entryDiv.innerHTML = `
-            <strong>Entry ${index + 1}</strong><br>
+            <strong>Entry ${index + 1}: ${entry.name}</strong><br>
             Minutes: ${entry.minutes}<br>
             Rate: ${entry.currency}${entry.rate.toFixed(2)}/min<br>
             Earnings: ${entry.currency}${entry.earnings.toFixed(2)}
-            <button onclick="removeEntry(${index})">Remove</button>
+            <div class="entry-buttons">
+                ${index > 0 ? `<button onclick="moveEntryUp(${index})">Up</button>` : ''}
+                <button onclick="removeEntry(${index})">Remove</button>
+            </div>
         `;
         entriesDiv.appendChild(entryDiv);
     });
+}
+
+function moveEntryUp(index) {
+    if (index > 0) {
+        const temp = entries[index];
+        entries[index] = entries[index - 1];
+        entries[index - 1] = temp;
+        updateEntriesDisplay();
+    }
 }
 
 function removeEntry(index) {
@@ -41,6 +54,7 @@ function removeEntry(index) {
 }
 
 function clearInputs() {
+    document.getElementById('name').value = '';
     document.getElementById('minutes').value = '';
     document.getElementById('rate').value = '';
 }
