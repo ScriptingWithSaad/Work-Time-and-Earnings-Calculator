@@ -26,7 +26,7 @@ function updateEntriesDisplay() {
         const entryDiv = document.createElement('div');
         entryDiv.classList.add('entry');
         entryDiv.innerHTML = `
-            <strong>Entry ${index + 1}: ${entry.name}</strong><br>
+            <strong>${index + 1}. ${entry.name}</strong><br>
             Minutes: ${entry.minutes}<br>
             Rate: ${entry.currency}${entry.rate.toFixed(2)}/min<br>
             Earnings: ${entry.currency}${entry.earnings.toFixed(2)}
